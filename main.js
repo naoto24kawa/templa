@@ -12,8 +12,8 @@ let mainWindow;
 function createWindow() {
   // メインウィンドウを作成します
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 400,
+    height: 350,
     webPreferences: {
       nodeIntegration: false
     }
@@ -28,7 +28,7 @@ function createWindow() {
   }));
 
   // デベロッパーツールの起動
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // メインウィンドウが閉じられたときの処理
   mainWindow.on('closed', () => {
