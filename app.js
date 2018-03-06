@@ -1,10 +1,12 @@
 $(document).ready(function() {
   let template;
   let values;
+  let templateName;
 
   $('#template').on({
     'change': function(f){
       const template_file = f.target.files;
+      templateName = template_file[0].name;
       const reader = new FileReader();
       reader.readAsText(template_file[0]);
       reader.onload = function(t){
@@ -66,13 +68,13 @@ $(document).ready(function() {
         // IEか他ブラウザかの判定
         if(window.navigator.msSaveBlob) {
             // IEなら独自関数を使います。
-            window.navigator.msSaveBlob(blob, 'result.html');
+            window.navigator.msSaveBlob(blob, '(' + i + ')' + templateName);
         } else {
             // それ以外はaタグを利用してイベントを発火させます
             var a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.target = '_blank';
-            a.download = 'result.html';
+            a.download = '(' + i + ')' + templateName;
             a.click();
         }
       }
